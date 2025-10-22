@@ -1,9 +1,10 @@
-name: Deploy Vite + TypeScript App
+name: CI & Deploy (Vite + React + TS + Tailwind)
 
 on:
   push:
     branches:
       - main
+  pull_request:
   workflow_dispatch:
 
 permissions:
@@ -12,12 +13,12 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "vite-deploy"
+  group: vite-react-deploy
   cancel-in-progress: true
 
 jobs:
   build:
-    name: Build Project
+    name: Lint, Type Check, Build
     runs-on: ubuntu-latest
 
     steps:
@@ -32,6 +33,12 @@ jobs:
 
       - name: Install Dependencies
         run: npm ci
+
+      - name: Lint Code
+        run: npm run lint
+
+      - name: Type Check
+        run: npx tsc --noEmit
 
       - name: Build Vite Project
         run: npm run build

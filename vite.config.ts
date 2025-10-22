@@ -4,7 +4,7 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
-  base: mode === "production" ? "/<REPO_NAME>/" : "/", // 👈 Adjust this
+  base: mode === "production" ? "/vite_react_shadcn_ts/" : "/", // ✅ Required for GitHub Pages
   server: {
     host: "::",
     port: 8080,

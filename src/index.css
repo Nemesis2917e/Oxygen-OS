@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Windows 11 Design System */
+    --background: 210 20% 98%;
+    --foreground: 210 11% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 210 11% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 11% 15%;
+
+    /* Windows 11 Blue */
+    --primary: 211 100% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 17% 95%;
+    --secondary-foreground: 210 11% 15%;
+
+    --muted: 210 17% 95%;
+    --muted-foreground: 210 11% 46%;
+
+    --accent: 211 100% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 17% 90%;
+    --input: 210 17% 90%;
+    --ring: 211 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Windows 11 specific tokens */
+    --taskbar-bg: 240 10% 98%;
+    --taskbar-blur: blur(40px);
+    --window-bg: 0 0% 100%;
+    --window-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    --glass-bg: rgba(255, 255, 255, 0.8);
+    --hover-overlay: rgba(0, 0, 0, 0.03);
+    --active-overlay: rgba(0, 120, 212, 0.1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground overflow-hidden;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer utilities {
+  .glass-effect {
+    background: var(--glass-bg);
+    backdrop-filter: var(--taskbar-blur);
+    -webkit-backdrop-filter: var(--taskbar-blur);
+  }
+
+  .window-shadow {
+    box-shadow: var(--window-shadow);
+  }
+
+  .taskbar-item {
+    @apply transition-all duration-200 rounded-lg p-2 hover:bg-black/5 active:scale-95;
+  }
+
+  .draggable-handle {
+    cursor: move;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+}
